@@ -41,7 +41,11 @@ class InfoCard extends StatelessWidget {
             child: count.isNotEmpty
                 ? Text(
               count,
-              style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
+              style: TextStyle(
+                color: Colors.white,
+                fontWeight: FontWeight.bold,
+                fontFamily: 'Poppins',
+              ),
             )
                 : Icon(icon, color: Colors.white),
           ),
@@ -51,7 +55,11 @@ class InfoCard extends StatelessWidget {
             label,
             textAlign: TextAlign.center,
 
-              style: const TextStyle(fontSize: 12, color: Color(0x99000031))
+              style: const TextStyle(
+                fontSize: 12,
+                color: Color(0x99000031),
+                fontFamily: 'Poppins',
+              )
             ),
 
         ],

@@ -3,7 +3,6 @@ import 'package:flutter/services.dart';
 import 'package:hap_takip/features/splash/widgets/animated_dot.dart';
 import 'package:provider/provider.dart';
 import '../widgets/animated_medication_icon.dart';
-import '../../../core/widgets/custom_app_bar.dart';
 import '../widgets/floating_icon.dart';
 import '../view_model/splash_view_model.dart';
 import '../widgets/feature_box.dart';
@@ -88,7 +87,7 @@ class _SplashScreenState extends State<SplashScreen> {
                       style: TextStyle(
                         fontSize: 28,
                         fontWeight: FontWeight.bold,
-                        fontFamily: 'Arial',
+                        fontFamily: 'Poppins',
                       ),
                       children: [
                         TextSpan(text: 'Medi', style: TextStyle(color: Color(0xFF1062FE))),
@@ -103,6 +102,7 @@ class _SplashScreenState extends State<SplashScreen> {
                     "Düzenli ilaç, sağlıklı yaşam",
                     style: TextStyle(
                       fontSize: 16,
+                      fontFamily: 'Poppins',
                       color: Color(0xFF000031),
                     ),
                   ),

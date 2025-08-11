@@ -49,9 +49,12 @@ class PhotoCard extends StatelessWidget {
               const SizedBox(width: 12),
               const Expanded(
                 child: Text(
-                  'Medicine Photo (Optional)',
+                  'İlaç Fotoğrafı (İsteğe Bağlı)',
                   style: TextStyle(
-                      fontSize: 16.5, fontWeight: FontWeight.w600),
+                    fontSize: 16.5,
+                    fontWeight: FontWeight.w600,
+                    fontFamily: 'Poppins',
+                  ),
                 ),
               ),
             ],
@@ -111,15 +114,21 @@ class PhotoCard extends StatelessWidget {
                         ),
                         const SizedBox(height: 12),
                         const Text(
-                          'Tap to add photo',
+                          'Fotoğraf eklemek için dokunun',
                           style: TextStyle(
-                              fontSize: 16, fontWeight: FontWeight.w700),
+                            fontSize: 16,
+                            fontWeight: FontWeight.w700,
+                            fontFamily: 'Poppins',
+                          ),
                         ),
                         const SizedBox(height: 6),
                         Text(
-                          'Help identify your medicine',
+                          'İlacınızı tanımlamaya yardımcı olur',
                           style: TextStyle(
-                              fontSize: 13.5, color: Colors.grey),
+                            fontSize: 13.5,
+                            color: Colors.grey,
+                            fontFamily: 'Poppins',
+                          ),
                         ),
                       ],
                     ),

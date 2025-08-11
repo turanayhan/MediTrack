@@ -62,8 +62,12 @@ class _RemindersCardState extends State<RemindersCard> {
                   Icon(Icons.access_time, color: Colors.orange, size: 22),
                   SizedBox(width: 8),
                   Text(
-                    "Reminders",
-                    style: TextStyle(fontSize: 16, fontWeight: FontWeight.w600),
+                    "Hatırlatıcılar",
+                    style: TextStyle(
+                      fontSize: 16,
+                      fontWeight: FontWeight.w600,
+                      fontFamily: 'Poppins',
+                    ),
                   ),
                 ],
               ),
@@ -97,14 +101,19 @@ class _RemindersCardState extends State<RemindersCard> {
                     TextSpan(
                       children: [
                         TextSpan(
-                          text: "Set your reminder times\n",
+                          text: "Hatırlatma saatlerinizi ayarlayın\n",
                           style: TextStyle(
-                              fontWeight: FontWeight.w600, fontSize: 14),
+                              fontWeight: FontWeight.w600,
+                              fontSize: 14,
+                              fontFamily: 'Poppins'),
                         ),
                         TextSpan(
                           text:
-                          "We'll notify you when it's time to take your medicine",
-                          style: TextStyle(fontSize: 12),
+                          "İlaç alma zamanınız geldiğinde sizi bilgilendireceğiz",
+                          style: TextStyle(
+                            fontSize: 12,
+                            fontFamily: 'Poppins',
+                          ),
                         ),
                       ],
                     ),
@@ -116,8 +125,12 @@ class _RemindersCardState extends State<RemindersCard> {
           const SizedBox(height: 16),
 
           const Text(
-            "Reminder Times",
-            style: TextStyle(fontWeight: FontWeight.w600, fontSize: 14),
+            "Hatırlatma Saatleri",
+            style: TextStyle(
+              fontWeight: FontWeight.w600,
+              fontSize: 14,
+              fontFamily: 'Poppins',
+            ),
           ),
           const SizedBox(height: 10),
 
@@ -187,9 +200,11 @@ class _RemindersCardState extends State<RemindersCard> {
                   Icon(Icons.add, size: 20, color: Colors.black54),
                   SizedBox(width: 6),
                   Text(
-                    "Add Another Time",
+                    "Başka Saat Ekle",
                     style: TextStyle(
-                        fontSize: 14, fontWeight: FontWeight.w500),
+                        fontSize: 14,
+                        fontWeight: FontWeight.w500,
+                        fontFamily: 'Poppins'),
                   ),
                 ],
               ),

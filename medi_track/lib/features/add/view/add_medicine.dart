@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:dotted_border/dotted_border.dart';
 
 import '../../../core/widgets/custom_app_bar.dart';
 import '../widgets/basic_info_card.dart';
@@ -19,7 +18,7 @@ class _AddMedicineState extends State<AddMedicine> {
   final TextEditingController _nameCtrl = TextEditingController();
   final TextEditingController _dosageCtrl = TextEditingController();
   String? _selectedType;
-  final List<String> _types = ['Tablet', 'Capsule', 'Syrup', 'Drops'];
+  final List<String> _types = ['Tablet', 'Kapsül', 'Şurup', 'Damla'];
 
 
   @override
@@ -40,9 +39,9 @@ class _AddMedicineState extends State<AddMedicine> {
     return Scaffold(
 
       appBar: CustomAppBar(
-        title: "Add New Medicine",
+        title: "Yeni İlaç Ekle",
         emoji: "💊",
-        actionText: "Save",
+        actionText: "Kaydet",
         onBack: () {
           // geri gitme işlemi
         },

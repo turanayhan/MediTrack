@@ -1,7 +1,4 @@
-  import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-
-import '../../../utils/app_gradient.dart';
 
 Widget topContainer(BuildContext context) {
     return Container(

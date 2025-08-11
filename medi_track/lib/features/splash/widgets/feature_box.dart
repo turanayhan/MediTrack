@@ -30,7 +30,11 @@ class FeatureBox extends StatelessWidget {
         const SizedBox(height: 8),
         Text(
           label,
-          style: const TextStyle(fontSize: 12, color: Color(0x99000031)),
+          style: const TextStyle(
+            fontSize: 12,
+            color: Color(0x99000031),
+            fontFamily: 'Poppins',
+          ),
         ),
       ],
     );

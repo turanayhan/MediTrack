@@ -1,6 +1,5 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
-import 'package:hap_takip/features/dashboard/view/dashboard.dart';
 import 'package:hap_takip/routes/app_routes.dart';
 
 class SplashViewModel extends ChangeNotifier {

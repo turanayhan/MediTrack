@@ -94,6 +94,7 @@ class MedicineStatusCard extends StatelessWidget {
                       style: const TextStyle(
                         fontWeight: FontWeight.bold,
                         fontSize: 16,
+                        fontFamily: 'Poppins',
                       ),
                     ),
                     Text(
@@ -101,6 +102,7 @@ class MedicineStatusCard extends StatelessWidget {
                       style: TextStyle(
                         fontSize: 12,
                         color: Colors.grey.shade600,
+                        fontFamily: 'Poppins',
                       ),
                     ),
                   ],
@@ -115,11 +117,12 @@ class MedicineStatusCard extends StatelessWidget {
                       // View butonu tıklandı
                     },
                     child: Text(
-                      "View",
+                      "Görüntüle",
                       style: TextStyle(
                         fontSize: 14,
                         color: Colors.blue.shade700,
                         fontWeight: FontWeight.bold,
+                        fontFamily: 'Poppins',
                       ),
                     ),
                   ),
@@ -132,21 +135,21 @@ class MedicineStatusCard extends StatelessWidget {
                     itemBuilder: (context) => [
                       const PopupMenuItem(
                         value: 'edit',
-                        child: Text("Edit"),
+                        child: Text("Düzenle"),
                       ),
                       const PopupMenuItem(
                         value: 'duplicate',
-                        child: Text("Duplicate"),
+                        child: Text("Kopyala"),
                       ),
                       const PopupMenuItem(
                         value: 'pause',
-                        child: Text("Pause"),
+                        child: Text("Duraklat"),
                       ),
                       const PopupMenuDivider(),
                       const PopupMenuItem(
                         value: 'delete',
                         child: Text(
-                          "Delete",
+                          "Sil",
                           style: TextStyle(color: Colors.red),
                         ),
                       ),
@@ -165,12 +168,20 @@ class MedicineStatusCard extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               const Text(
-                "Progress",
-                style: TextStyle(fontSize: 12, color: Colors.grey),
+                "İlerleme",
+                style: TextStyle(
+                  fontSize: 12,
+                  color: Colors.grey,
+                  fontFamily: 'Poppins',
+                ),
               ),
               Text(
                 "${medicine.progressCurrent}/${medicine.progressTotal}",
-                style: const TextStyle(fontSize: 12, color: Colors.grey),
+                style: const TextStyle(
+                  fontSize: 12,
+                  color: Colors.grey,
+                  fontFamily: 'Poppins',
+                ),
               ),
             ],
           ),
@@ -192,14 +203,20 @@ class MedicineStatusCard extends StatelessWidget {
               const SizedBox(width: 4),
               Text(
                 medicine.frequency,
-                style: const TextStyle(fontSize: 12),
+                style: const TextStyle(
+                  fontSize: 12,
+                  fontFamily: 'Poppins',
+                ),
               ),
               const SizedBox(width: 12),
               const Icon(Icons.access_time, size: 14, color: Colors.grey),
               const SizedBox(width: 4),
               Text(
-                "Next: ${medicine.nextTime}",
-                style: const TextStyle(fontSize: 12),
+                "Sonraki: ${medicine.nextTime}",
+                style: const TextStyle(
+                  fontSize: 12,
+                  fontFamily: 'Poppins',
+                ),
               ),
             ],
           ),
@@ -221,6 +238,7 @@ class MedicineStatusCard extends StatelessWidget {
                     color: _statusColor(),
                     fontWeight: FontWeight.bold,
                     fontSize: 12,
+                    fontFamily: 'Poppins',
                   ),
                 ),
               ),
@@ -237,6 +255,7 @@ class MedicineStatusCard extends StatelessWidget {
                     color: Colors.purple,
                     fontWeight: FontWeight.bold,
                     fontSize: 12,
+                    fontFamily: 'Poppins',
                   ),
                 ),
               ),
@@ -255,8 +274,11 @@ class MedicineStatusCard extends StatelessWidget {
             child: Row(
               children: [
                 const Text(
-                  "Adherence",
-                  style: TextStyle(fontSize: 12),
+                  "Uyum",
+                  style: TextStyle(
+                    fontSize: 12,
+                    fontFamily: 'Poppins',
+                  ),
                 ),
                 const Spacer(),
                 Text(
@@ -264,6 +286,7 @@ class MedicineStatusCard extends StatelessWidget {
                   style: const TextStyle(
                     fontSize: 12,
                     fontWeight: FontWeight.bold,
+                    fontFamily: 'Poppins',
                   ),
                 ),
               ],

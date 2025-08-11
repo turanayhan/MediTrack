@@ -55,13 +55,21 @@ class WeekCard extends StatelessWidget {
               ),
               SizedBox(width: 12),
               Text(
-                'This Week',
-                style: TextStyle(fontSize: 18, fontWeight: FontWeight.w600),
+                'Bu Hafta',
+                style: TextStyle(
+                  fontSize: 18,
+                  fontWeight: FontWeight.w600,
+                  fontFamily: 'Poppins',
+                ),
               ),
               Spacer(),
               Text(
-                '$adherence% adherence',
-                style: TextStyle(fontSize: 13, color: Colors.grey[600]),
+                '$adherence% uyum',
+                style: TextStyle(
+                  fontSize: 13,
+                  color: Colors.grey[600],
+                  fontFamily: 'Poppins',
+                ),
               ),
             ],
           ),
@@ -130,13 +138,13 @@ class WeekCard extends StatelessWidget {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    _dayLabel('Mon'),
-                    _dayLabel('Tue'),
-                    _dayLabel('Wed'),
-                    _dayLabel('Thu'),
-                    _dayLabel('Fri'),
-                    _dayLabel('Sat'),
-                    _dayLabel('Sun'),
+                    _dayLabel('Pzt'),
+                    _dayLabel('Sal'),
+                    _dayLabel('Çar'),
+                    _dayLabel('Per'),
+                    _dayLabel('Cum'),
+                    _dayLabel('Cmt'),
+                    _dayLabel('Paz'),
                   ],
                 ),
               ],
@@ -149,9 +157,9 @@ class WeekCard extends StatelessWidget {
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              LegendDot(color: Color(0xFF2ECC71), number: taken, label: 'taken'),
-              LegendDot(color: Color(0xFFE74C3C), number: missed, label: 'missed'),
-              LegendDot(color: Color(0xFF4A7BD8), number: upcoming, label: 'upcoming'),
+              LegendDot(color: Color(0xFF2ECC71), number: taken, label: 'alınan'),
+              LegendDot(color: Color(0xFFE74C3C), number: missed, label: 'kaçan'),
+              LegendDot(color: Color(0xFF4A7BD8), number: upcoming, label: 'yakında'),
             ],
           ),
         ],
@@ -161,7 +169,11 @@ class WeekCard extends StatelessWidget {
 
   Widget _dayLabel(String txt) => Text(
     txt,
-    style: TextStyle(fontSize: 13, color: Colors.grey[600]),
+    style: TextStyle(
+      fontSize: 13,
+      color: Colors.grey[600],
+      fontFamily: 'Poppins',
+    ),
   );
 }
 

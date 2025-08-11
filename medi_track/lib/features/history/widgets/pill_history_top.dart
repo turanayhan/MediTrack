@@ -23,7 +23,7 @@ class PillHistoryCard extends StatelessWidget {
           Row(
             children: const [
               Text(
-                "Pill History ",
+                "İlaç Geçmişi ",
                 style: TextStyle(
                   fontSize: 18,
                   fontWeight: FontWeight.bold,
@@ -39,7 +39,7 @@ class PillHistoryCard extends StatelessWidget {
           ),
           const SizedBox(height: 4),
           const Text(
-            "Track your medication journey",
+            "İlaç yolculuğunuzu takip edin",
             style: TextStyle(
               fontSize: 14,
               color: Colors.white,
@@ -63,7 +63,7 @@ class PillHistoryCard extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: const [
                     Text(
-                      "Overall Adherence",
+                      "Genel Uyum",
                       style: TextStyle(
                         fontSize: 14,
                         fontWeight: FontWeight.bold,
@@ -105,7 +105,7 @@ class PillHistoryCard extends StatelessWidget {
                 ),
                 const SizedBox(height: 8),
                 const Text(
-                  "Keep up the great work! 💪",
+                  "Harika iş çıkarıyorsunuz! 💪",
                   style: TextStyle(
                     fontSize: 12,
                     color: Colors.white,

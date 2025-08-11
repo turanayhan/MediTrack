@@ -20,8 +20,8 @@ class QuickActions extends StatelessWidget {
             ],
 
 
-            title: "Add Medicine",
-            subtitle: "Set up new medication",
+            title: "İlaç Ekle",
+            subtitle: "Yeni ilaç ekle",
           ),
         ),
         const SizedBox(width: 16),
@@ -33,8 +33,8 @@ class QuickActions extends StatelessWidget {
               Color(0xFF66F9D5), // Açık yeşil (sol üst)
               Color(0xFF00C853), // Koyu yeşil (sağ alt)
             ],
-            title: "Set Reminder",
-            subtitle: "Configure notifications",
+            title: "Hatırlatıcı Ayarla",
+            subtitle: "Bildirimleri yapılandır",
           ),
         ),
       ],

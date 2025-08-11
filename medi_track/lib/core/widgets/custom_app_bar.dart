@@ -49,6 +49,7 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
                     color: Colors.white,
                     fontSize: 20,
                     fontWeight: FontWeight.bold,
+                    fontFamily: 'Poppins',
                   ),
                 ),
               ),
@@ -67,6 +68,7 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
                   style: const TextStyle(
                     color: Colors.white,
                     fontWeight: FontWeight.w500,
+                    fontFamily: 'Poppins',
                   ),
                 ),
               ),

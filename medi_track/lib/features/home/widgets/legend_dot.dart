@@ -27,10 +27,28 @@ class LegendDot extends StatelessWidget {
         // number bold + label muted
         RichText(
           text: TextSpan(
-            style: TextStyle(fontSize: 14, color: Colors.grey[800]),
+            style: TextStyle(
+              fontSize: 14,
+              color: Colors.grey[800],
+              fontFamily: 'Poppins',
+            ),
             children: [
-              TextSpan(text: '$number', style: TextStyle(fontWeight: FontWeight.bold, color: Colors.black)),
-              TextSpan(text: ' $label', style: TextStyle(fontWeight: FontWeight.normal, color: Colors.grey[600])),
+              TextSpan(
+                text: '$number',
+                style: TextStyle(
+                  fontWeight: FontWeight.bold,
+                  color: Colors.black,
+                  fontFamily: 'Poppins',
+                ),
+              ),
+              TextSpan(
+                text: ' $label',
+                style: TextStyle(
+                  fontWeight: FontWeight.normal,
+                  color: Colors.grey[600],
+                  fontFamily: 'Poppins',
+                ),
+              ),
             ],
           ),
         ),

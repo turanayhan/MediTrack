@@ -1,13 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:hap_takip/features/home/widgets/action_card.dart';
 import 'package:hap_takip/features/home/widgets/quick_actions_card.dart';
 import 'package:hap_takip/features/home/widgets/top_container.dart';
 
 import '../widgets/blink_info_card.dart';
 import '../widgets/header_widget.dart' show HeaderWidget;
 import '../widgets/info_card.dart';
-import '../../../utils/app_gradient.dart';
 import '../widgets/medicine_card.dart';
 import '../model/medicine.dart';
 import '../widgets/we_card.dart';
@@ -41,37 +39,37 @@ class _HomePageState extends State<HomePage> {
       Medicine(
         title: "Vitamin D",
         dosage: "1000 IU",
-        time: "08:00 AM",
-        statusText: "Taken",
+        time: "08:00",
+        statusText: "Alındı",
         statusColor: Colors.green,
         statusIcon: Icons.check_circle,
         iconColor: Colors.orange,
       ),
       Medicine(
-        title: "Blood Pressure",
+        title: "Tansiyon İlacı",
         dosage: "10mg",
-        time: "12:00 PM",
-        statusText: "Due Now",
+        time: "12:00",
+        statusText: "Şimdi Alınmalı",
         statusColor: Colors.red,
         statusIcon: Icons.access_time,
         iconColor: Colors.pink,
         showActionButton: true,
-        actionText: "Take Now",
+        actionText: "Şimdi Al",
       ),
       Medicine(
-        title: "Calcium",
+        title: "Kalsiyum",
         dosage: "500mg",
-        time: "06:00 PM",
-        statusText: "Upcoming",
+        time: "18:00",
+        statusText: "Yakında",
         statusColor: Colors.blue,
         statusIcon: Icons.event,
         iconColor: Colors.green,
       ),
       Medicine(
-        title: "Sleep Aid",
+        title: "Uyku İlacı",
         dosage: "5mg",
-        time: "10:00 PM",
-        statusText: "Upcoming",
+        time: "22:00",
+        statusText: "Yakında",
         statusColor: Colors.blue,
         statusIcon: Icons.event,
         iconColor: Colors.purple,

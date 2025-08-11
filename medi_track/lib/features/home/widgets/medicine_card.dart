@@ -86,6 +86,7 @@ class MedicineCard extends StatelessWidget {
                   style: const TextStyle(
                     fontWeight: FontWeight.bold,
                     fontSize: 16,
+                    fontFamily: 'Poppins',
                   ),
                 ),
                 const SizedBox(height: 4),
@@ -94,6 +95,7 @@ class MedicineCard extends StatelessWidget {
                   style: const TextStyle(
                     color: Colors.black54,
                     fontSize: 14,
+                    fontFamily: 'Poppins',
                   ),
                 ),
                 const SizedBox(height: 6),
@@ -114,6 +116,7 @@ class MedicineCard extends StatelessWidget {
                           color: medicine.statusColor,
                           fontSize: 12,
                           fontWeight: FontWeight.w500,
+                          fontFamily: 'Poppins',
                         ),
                       ),
                     ],
@@ -142,8 +145,11 @@ class MedicineCard extends StatelessWidget {
             TextButton(
               onPressed: () {},
               child: const Text(
-                "View",
-                style: TextStyle(color: Colors.blue),
+                "Görüntüle",
+                style: TextStyle(
+                  color: Colors.blue,
+                  fontFamily: 'Poppins',
+                ),
               ),
             ),
         ],

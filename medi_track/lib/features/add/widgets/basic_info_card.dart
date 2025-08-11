@@ -50,8 +50,12 @@ class BasicInfoCard extends StatelessWidget {
               const SizedBox(width: 12),
               const Expanded(
                 child: Text(
-                  'Basic Information',
-                  style: TextStyle(fontSize: 16.5, fontWeight: FontWeight.w600),
+                  'Temel Bilgiler',
+                  style: TextStyle(
+                    fontSize: 16.5,
+                    fontWeight: FontWeight.w600,
+                    fontFamily: 'Poppins',
+                  ),
                 ),
               ),
             ],
@@ -59,11 +63,18 @@ class BasicInfoCard extends StatelessWidget {
           const SizedBox(height: 16),
 
           // Medicine Name
-          const Text('Medicine Name *', style: TextStyle(fontSize: 13.5, fontWeight: FontWeight.w600)),
+          const Text(
+            'İlaç Adı *',
+            style: TextStyle(
+              fontSize: 13.5,
+              fontWeight: FontWeight.w600,
+              fontFamily: 'Poppins',
+            ),
+          ),
           const SizedBox(height: 8),
           TextField(
             controller: nameCtrl,
-            decoration: _inputDecoration('Enter medicine name'),
+            decoration: _inputDecoration('İlaç adını girin'),
           ),
           const SizedBox(height: 18),
 
@@ -74,11 +85,18 @@ class BasicInfoCard extends StatelessWidget {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    const Text('Dosage *', style: TextStyle(fontSize: 13.5, fontWeight: FontWeight.w600)),
+                    const Text(
+                      'Doz *',
+                      style: TextStyle(
+                        fontSize: 13.5,
+                        fontWeight: FontWeight.w600,
+                        fontFamily: 'Poppins',
+                      ),
+                    ),
                     const SizedBox(height: 8),
                     TextField(
                       controller: dosageCtrl,
-                      decoration: _inputDecoration('e.g., 500mg'),
+                      decoration: _inputDecoration('örn: 500mg'),
                     ),
                   ],
                 ),
@@ -88,13 +106,20 @@ class BasicInfoCard extends StatelessWidget {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    const Text('Type', style: TextStyle(fontSize: 13.5, fontWeight: FontWeight.w600)),
+                    const Text(
+                      'Tür',
+                      style: TextStyle(
+                        fontSize: 13.5,
+                        fontWeight: FontWeight.w600,
+                        fontFamily: 'Poppins',
+                      ),
+                    ),
                     const SizedBox(height: 8),
                     DropdownButtonFormField<String>(
                       value: selectedType,
                       items: types.map((t) => DropdownMenuItem(value: t, child: Text(t))).toList(),
                       onChanged: onTypeChanged,
-                      decoration: _inputDecoration('Select type'),
+                      decoration: _inputDecoration('Tür seçin'),
                     ),
                   ],
                 ),

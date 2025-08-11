@@ -70,7 +70,11 @@ class _BlinkingIconInfoCardState extends State<BlinkingInfoCard> with SingleTick
                 child: widget.count.isNotEmpty
                     ? Text(
                   widget.count,
-                  style: const TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
+                  style: const TextStyle(
+                    color: Colors.white,
+                    fontWeight: FontWeight.bold,
+                    fontFamily: 'Poppins',
+                  ),
                 )
                     : Icon(widget.icon, color: Colors.white),
               );
@@ -80,7 +84,11 @@ class _BlinkingIconInfoCardState extends State<BlinkingInfoCard> with SingleTick
           Text(
             widget.label,
             textAlign: TextAlign.center,
-            style: const TextStyle(fontSize: 12, color: Color(0x99000031)),
+            style: const TextStyle(
+              fontSize: 12,
+              color: Color(0x99000031),
+              fontFamily: 'Poppins',
+            ),
           ),
         ],
       ),

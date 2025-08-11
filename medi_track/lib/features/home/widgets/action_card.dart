@@ -65,13 +65,21 @@ class ActionCard extends StatelessWidget {
 
           Text(
             title,
-            style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
+            style: const TextStyle(
+              fontWeight: FontWeight.bold,
+              fontSize: 16,
+              fontFamily: 'Poppins',
+            ),
             textAlign: TextAlign.center,
           ),
 
           Text(
             subtitle,
-            style: TextStyle(color: Colors.grey[600], fontSize: 12),
+            style: TextStyle(
+              color: Colors.grey[600],
+              fontSize: 12,
+              fontFamily: 'Poppins',
+            ),
             textAlign: TextAlign.center,
           ),
 

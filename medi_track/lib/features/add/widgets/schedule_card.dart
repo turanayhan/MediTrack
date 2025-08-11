@@ -12,17 +12,17 @@ class _ScheduleCardState extends State<ScheduleCard> {
   String? selectedDuration;
 
   final List<String> frequencyOptions = [
-    "Every day",
-    "Every 8 hours",
-    "Every 12 hours",
-    "Once a week",
+    "Her gün",
+    "8 saatte bir",
+    "12 saatte bir",
+    "Haftada bir",
   ];
 
   final List<String> durationOptions = [
-    "1 week",
-    "2 weeks",
-    "1 month",
-    "3 months",
+    "1 hafta",
+    "2 hafta",
+    "1 ay",
+    "3 ay",
   ];
 
   @override
@@ -39,8 +39,12 @@ class _ScheduleCardState extends State<ScheduleCard> {
               Icon(Icons.schedule, color: Colors.green),
               SizedBox(width: 8),
               Text(
-                "Schedule",
-                style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+                "Program",
+                style: TextStyle(
+                  fontSize: 18,
+                  fontWeight: FontWeight.bold,
+                  fontFamily: 'Poppins',
+                ),
               ),
             ],
           ),
@@ -54,16 +58,17 @@ class _ScheduleCardState extends State<ScheduleCard> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     const Text(
-                      "Frequency",
+                      "Sıklık",
                       style: TextStyle(
                         fontWeight: FontWeight.bold,
                         fontSize: 14,
                         color: Colors.black87,
+                        fontFamily: 'Poppins',
                       ),
                     ),
                     const SizedBox(height: 6),
                     _buildDropdown(
-                      hint: "How often?",
+                      hint: "Ne sıklıkta?",
                       value: selectedFrequency,
                       items: frequencyOptions,
                       onChanged: (value) {
@@ -79,16 +84,17 @@ class _ScheduleCardState extends State<ScheduleCard> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     const Text(
-                      "Duration",
+                      "Süre",
                       style: TextStyle(
                         fontWeight: FontWeight.bold,
                         fontSize: 14,
                         color: Colors.black87,
+                        fontFamily: 'Poppins',
                       ),
                     ),
                     const SizedBox(height: 6),
                     _buildDropdown(
-                      hint: "How long?",
+                      hint: "Ne kadar süre?",
                       value: selectedDuration,
                       items: durationOptions,
                       onChanged: (value) {
