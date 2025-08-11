@@ -91,8 +91,8 @@ class _SplashScreenState extends State<SplashScreen> {
                         fontFamily: 'Arial',
                       ),
                       children: [
-                        TextSpan(text: 'Hap', style: TextStyle(color: Color(0xFF1062FE))),
-                        TextSpan(text: 'Takip', style: TextStyle(color: Color(0xFF1BC58D))),
+                        TextSpan(text: 'Media', style: TextStyle(color: Color(0xFF1062FE))),
+                        TextSpan(text: 'Track', style: TextStyle(color: Color(0xFF1BC58D))),
                       ],
                     ),
                   ),
