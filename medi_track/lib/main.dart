@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:hap_takip/core/theme/app_theme.dart';
+import 'package:hap_takip/features/add/view_model/add_view_model.dart';
 import 'package:hap_takip/features/splash/view/splash_screen.dart';
 import 'package:hap_takip/routes/app_routes.dart';
 import 'package:provider/provider.dart';
@@ -17,6 +18,7 @@ void main() {
     MultiProvider(
       providers: [
         ChangeNotifierProvider(create: (_) => SplashViewModel()),
+        ChangeNotifierProvider(create: (_) => AddViewModel()),
       ],
       child: const MyApp(),
     ),

@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:provider/provider.dart';
 import '../../../core/widgets/gradient_button.dart';
 
+import '../../add/view_model/add_view_model.dart';
 import '../model/medicine_status_model.drat.dart';
 import '../widgets/pill_history_search.dart';
 import '../widgets/medicine_status_card.dart';
@@ -17,38 +19,7 @@ class PillHistory extends StatefulWidget {
 class _PillHistoryState extends State<PillHistory> {
   double adherence = 0.92;
 
-  final List<MedicineStatus> medicines = [
-    MedicineStatus(
-      name: "Omega 3",
-      dosage: "500mg",
-      form: "Kapsül",
-      progressCurrent: 14,
-      progressTotal: 30,
-      frequency: "Günde Bir",
-      nextTime: "09:00",
-      statusLabel: "Mükemmel",
-      statusType: "excellent",
-      streakLabel: "🔥 7 gün",
-      adherence: 96,
-      iconPath: "assets/icons/pill.png",
-      statusColor: Colors.orange,
-    ),
-    MedicineStatus(
-      name: "Magnezyum",
-      dosage: "250mg",
-      form: "Tablet",
-      progressCurrent: 22,
-      progressTotal: 30,
-      frequency: "Günde İki",
-      nextTime: "12:30",
-      statusLabel: "İyi",
-      statusType: "good",
-      streakLabel: "⭐ 5 gün",
-      adherence: 89,
-      iconPath: "assets/icons/pill.png",
-      statusColor: Colors.pink,
-    ),
-  ];
+
 
   @override
   void initState() {
@@ -64,6 +35,9 @@ class _PillHistoryState extends State<PillHistory> {
 
   @override
   Widget build(BuildContext context) {
+
+    final medicines = Provider.of<AddViewModel>(context).medicines;
+
     return Scaffold(
       backgroundColor: const Color(0xFFF3F8FE),
       body: NestedScrollView(

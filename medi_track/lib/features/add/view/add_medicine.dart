@@ -1,6 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:hap_takip/features/history/model/medicine_status_model.drat.dart';
+import 'package:provider/provider.dart';
 
 import '../../../core/widgets/custom_app_bar.dart';
+import '../../../core/widgets/gradient_button.dart';
+
+import '../view_model/add_view_model.dart';
 import '../widgets/basic_info_card.dart';
 import '../widgets/photo_card.dart';
 import '../widgets/reminders_card.dart';
@@ -21,6 +26,59 @@ class _AddMedicineState extends State<AddMedicine> {
   final List<String> _types = ['Tablet', 'Kapsül', 'Şurup', 'Damla'];
 
 
+
+
+  void _saveMedicine() async {
+    final name = _nameCtrl.text.trim();
+    final dosage = _dosageCtrl.text.trim();
+    final type = _selectedType ?? '';
+
+
+
+    final MedicineStatus medicine = MedicineStatus(
+      name: "name",
+      dosage: "dosage",
+      form: "type",
+      progressCurrent: 3,
+      progressTotal: 7,
+      frequency: "Günde 3 kez",
+      nextTime: "14:00",
+      statusLabel: "Harika!",
+      statusType: "excellent",
+      streakLabel: "3 gün üst üste alındı",
+      adherence: 85,
+      iconPath: "assets/icons/paracetamol.png",
+      statusColor: Colors.green,
+    );
+
+    setState(() {
+    //  _isSaving = true;
+    });
+
+    bool success = await context.read<AddViewModel>().saveMedicine(medicine);
+
+    setState(() {
+    //  _isSaving = false;
+    });
+
+    if (success) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(content: Text('İlaç başarıyla kaydedildi!')),
+      );
+
+      // Formu temizle
+      _nameCtrl.clear();
+      _dosageCtrl.clear();
+      setState(() => _selectedType = null);
+    } else {
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(content: Text('Lütfen tüm alanları doldurun.')),
+      );
+    }
+  }
+
+
+
   @override
   void dispose() {
     _nameCtrl.dispose();
@@ -36,6 +94,9 @@ class _AddMedicineState extends State<AddMedicine> {
 
   @override
   Widget build(BuildContext context) {
+
+    final medicines = Provider.of<AddViewModel>(context).medicines;
+
     return Scaffold(
 
       appBar: CustomAppBar(
@@ -65,7 +126,6 @@ class _AddMedicineState extends State<AddMedicine> {
               ,
               const SizedBox(height: 16),
 
-              // Alt kart: Basic Information
               BasicInfoCard(
                 nameCtrl: _nameCtrl,
                 dosageCtrl: _dosageCtrl,
@@ -78,6 +138,41 @@ class _AddMedicineState extends State<AddMedicine> {
               ScheduleCard(),
               SizedBox(height: 16),
               RemindersCard(),
+
+
+              // medicines listesini gösteren küçük bir liste
+              const SizedBox(height: 16),
+              Text(
+                "Kaydedilen İlaçlar:",
+                style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+              ),
+              const SizedBox(height: 8),
+              ListView.builder(
+                shrinkWrap: true,
+                physics: const NeverScrollableScrollPhysics(),
+                itemCount: medicines.length,
+                itemBuilder: (context, index) {
+                  final med = medicines[index];
+                  return ListTile(
+                    leading: const Icon(Icons.local_pharmacy_outlined),
+                    title: Text(med.name),
+                    subtitle: Text('${med.dosage} '),
+                  );
+                },
+              ),
+
+              Padding(
+            padding: const EdgeInsets.only(top: 24, bottom: 32),
+            child: GradientButton(
+              text: "İlacı Kaydet",
+              onPressed: () {
+                print("Buton tıklandı");
+               _saveMedicine();
+              },
+            ),
+          )
+
+
 
             ],
           ),
