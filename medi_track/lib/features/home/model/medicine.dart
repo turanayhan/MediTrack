@@ -11,6 +11,7 @@ class Medicine {
   final bool showActionButton;
   final String? actionText;
 
+
   Medicine({
     required this.title,
     required this.dosage,
@@ -20,6 +21,6 @@ class Medicine {
     required this.statusIcon,
     required this.iconColor,
     this.showActionButton = false,
-    this.actionText,
+    required this.actionText,
   });
 }

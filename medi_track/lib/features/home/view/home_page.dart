@@ -2,7 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:hap_takip/features/home/widgets/quick_actions_card.dart';
 import 'package:hap_takip/features/home/widgets/top_container.dart';
+import 'package:provider/provider.dart';
 
+import '../../add/view_model/add_view_model.dart';
 import '../widgets/blink_info_card.dart';
 import '../widgets/header_widget.dart' show HeaderWidget;
 import '../widgets/info_card.dart';
@@ -34,47 +36,9 @@ class _HomePageState extends State<HomePage> {
 
   @override
   Widget build(BuildContext context) {
-    // Dinamik veri listesi
-    final List<Medicine> medicines = [
-      Medicine(
-        title: "Vitamin D",
-        dosage: "1000 IU",
-        time: "08:00",
-        statusText: "Alındı",
-        statusColor: Colors.green,
-        statusIcon: Icons.check_circle,
-        iconColor: Colors.orange,
-      ),
-      Medicine(
-        title: "Tansiyon İlacı",
-        dosage: "10mg",
-        time: "12:00",
-        statusText: "Şimdi Alınmalı",
-        statusColor: Colors.red,
-        statusIcon: Icons.access_time,
-        iconColor: Colors.pink,
-        showActionButton: true,
-        actionText: "Şimdi Al",
-      ),
-      Medicine(
-        title: "Kalsiyum",
-        dosage: "500mg",
-        time: "18:00",
-        statusText: "Yakında",
-        statusColor: Colors.blue,
-        statusIcon: Icons.event,
-        iconColor: Colors.green,
-      ),
-      Medicine(
-        title: "Uyku İlacı",
-        dosage: "5mg",
-        time: "22:00",
-        statusText: "Yakında",
-        statusColor: Colors.blue,
-        statusIcon: Icons.event,
-        iconColor: Colors.purple,
-      ),
-    ];
+
+    final medicines = Provider.of<AddViewModel>(context).medicines;
+
 
     return Scaffold(
       backgroundColor: const Color(0xFFF3F8FE),
@@ -124,7 +88,7 @@ class _HomePageState extends State<HomePage> {
               return MedicineCard(
                 medicine: medicines[index],
                 onActionTap: () {
-                  debugPrint("${medicines[index].title} tıklandı");
+                  debugPrint("${medicines[index].name} tıklandı");
                 },
               );
             } else {

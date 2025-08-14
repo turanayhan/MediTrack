@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:hap_takip/features/history/model/medicine_status_model.drat.dart';
 import '../model/medicine.dart';
 
 
 class MedicineCard extends StatelessWidget {
-  final Medicine medicine;
+  final MedicineStatus medicine;
   final VoidCallback? onActionTap;
 
   const MedicineCard({
@@ -82,7 +83,7 @@ class MedicineCard extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  medicine.title,
+                  medicine.name,
                   style: const TextStyle(
                     fontWeight: FontWeight.bold,
                     fontSize: 16,
@@ -91,7 +92,7 @@ class MedicineCard extends StatelessWidget {
                 ),
                 const SizedBox(height: 4),
                 Text(
-                  "${medicine.dosage} • ${medicine.time}",
+                  "${medicine.dosage} • ${medicine.nextTime}",
                   style: const TextStyle(
                     color: Colors.black54,
                     fontSize: 14,

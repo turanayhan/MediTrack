@@ -11,7 +11,6 @@ import '../widgets/photo_card.dart';
 import '../widgets/reminders_card.dart';
 import '../widgets/schedule_card.dart';
 
-
 class AddMedicine extends StatefulWidget {
   const AddMedicine({super.key});
 
@@ -25,15 +24,10 @@ class _AddMedicineState extends State<AddMedicine> {
   String? _selectedType;
   final List<String> _types = ['Tablet', 'Kapsül', 'Şurup', 'Damla'];
 
-
-
-
   void _saveMedicine() async {
     final name = _nameCtrl.text.trim();
     final dosage = _dosageCtrl.text.trim();
     final type = _selectedType ?? '';
-
-
 
     final MedicineStatus medicine = MedicineStatus(
       name: "name",
@@ -47,18 +41,23 @@ class _AddMedicineState extends State<AddMedicine> {
       statusType: "excellent",
       streakLabel: "3 gün üst üste alındı",
       adherence: 85,
-      iconPath: "assets/icons/paracetamol.png",
+      iconPath: "assets/images/medicinesCol",
       statusColor: Colors.green,
+      statusText: "günde 3 defa",
+      statusIcon: Icons.ice_skating_sharp,
+      showActionButton: true,
+      actionText: 'sdvdvs',
+      iconColor: Colors.grey,
     );
 
     setState(() {
-    //  _isSaving = true;
+      //  _isSaving = true;
     });
 
     bool success = await context.read<AddViewModel>().saveMedicine(medicine);
 
     setState(() {
-    //  _isSaving = false;
+      //  _isSaving = false;
     });
 
     if (success) {
@@ -77,8 +76,6 @@ class _AddMedicineState extends State<AddMedicine> {
     }
   }
 
-
-
   @override
   void dispose() {
     _nameCtrl.dispose();
@@ -94,11 +91,9 @@ class _AddMedicineState extends State<AddMedicine> {
 
   @override
   Widget build(BuildContext context) {
-
     final medicines = Provider.of<AddViewModel>(context).medicines;
 
     return Scaffold(
-
       appBar: CustomAppBar(
         title: "Yeni İlaç Ekle",
         emoji: "💊",
@@ -115,15 +110,9 @@ class _AddMedicineState extends State<AddMedicine> {
         child: SingleChildScrollView(
           padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 20),
           child: Column(
-
-            mainAxisAlignment:MainAxisAlignment.spaceEvenly,
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
-              // Üst kart: Medicine Photo
-              PhotoCard(
-                onTapPhoto: _onTapPhoto,
-              )
-
-              ,
+              PhotoCard(onTapPhoto: _onTapPhoto),
               const SizedBox(height: 16),
 
               BasicInfoCard(
@@ -139,41 +128,19 @@ class _AddMedicineState extends State<AddMedicine> {
               SizedBox(height: 16),
               RemindersCard(),
 
-
               // medicines listesini gösteren küçük bir liste
               const SizedBox(height: 16),
-              Text(
-                "Kaydedilen İlaçlar:",
-                style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
-              ),
-              const SizedBox(height: 8),
-              ListView.builder(
-                shrinkWrap: true,
-                physics: const NeverScrollableScrollPhysics(),
-                itemCount: medicines.length,
-                itemBuilder: (context, index) {
-                  final med = medicines[index];
-                  return ListTile(
-                    leading: const Icon(Icons.local_pharmacy_outlined),
-                    title: Text(med.name),
-                    subtitle: Text('${med.dosage} '),
-                  );
-                },
-              ),
 
               Padding(
-            padding: const EdgeInsets.only(top: 24, bottom: 32),
-            child: GradientButton(
-              text: "İlacı Kaydet",
-              onPressed: () {
-                print("Buton tıklandı");
-               _saveMedicine();
-              },
-            ),
-          )
-
-
-
+                padding: const EdgeInsets.only(top: 24, bottom: 32),
+                child: GradientButton(
+                  text: "İlacı Kaydet",
+                  onPressed: () {
+                    print("Buton tıklandı");
+                    _saveMedicine();
+                  },
+                ),
+              ),
             ],
           ),
         ),
