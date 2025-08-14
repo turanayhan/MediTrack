@@ -136,7 +136,8 @@ class _AddMedicineState extends State<AddMedicine> {
                 child: GradientButton(
                   text: "İlacı Kaydet",
                   onPressed: () {
-                    print("Buton tıklandı");
+                    print("Buton   tıklandı");
+
                     _saveMedicine();
                   },
                 ),

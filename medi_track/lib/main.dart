@@ -15,6 +15,7 @@ void main() {
     statusBarIconBrightness: Brightness.light,
   ));
   runApp(
+    //provider tanımlama
     MultiProvider(
       providers: [
         ChangeNotifierProvider(create: (_) => SplashViewModel()),
