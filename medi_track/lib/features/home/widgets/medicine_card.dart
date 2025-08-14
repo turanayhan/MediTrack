@@ -1,17 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:hap_takip/features/history/model/medicine_status_model.drat.dart';
-import '../model/medicine.dart';
-
 
 class MedicineCard extends StatelessWidget {
   final MedicineStatus medicine;
   final VoidCallback? onActionTap;
 
-  const MedicineCard({
-    super.key,
-    required this.medicine,
-    this.onActionTap,
-  });
+  const MedicineCard({super.key, required this.medicine, this.onActionTap});
 
   @override
   Widget build(BuildContext context) {
@@ -39,7 +33,7 @@ class MedicineCard extends StatelessWidget {
                 width: 50,
                 height: 50,
                 decoration: BoxDecoration(
-                  color: medicine.iconColor,
+                  color: medicine.statusColor,
                   borderRadius: BorderRadius.circular(12),
                 ),
                 alignment: Alignment.center,
@@ -52,13 +46,12 @@ class MedicineCard extends StatelessWidget {
                   ),
                   alignment: Alignment.center,
                   child: const Icon(
-                  Icons.medication, // İstediğin ikon
-                  color:  Color(0xFF165DFB), // İkon rengi
-                  size: 16, // Küçük ikon boyutu
+                    Icons.medication, // İstediğin ikon
+                    color: Color(0xFF165DFB), // İkon rengi
+                    size: 16, // Küçük ikon boyutu
+                  ),
                 ),
-                ),
-              )
-              ,
+              ),
               Positioned(
                 right: -4,
                 top: -4,
@@ -101,7 +94,10 @@ class MedicineCard extends StatelessWidget {
                 ),
                 const SizedBox(height: 6),
                 Container(
-                  padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
+                  padding: const EdgeInsets.symmetric(
+                    horizontal: 8,
+                    vertical: 4,
+                  ),
                   decoration: BoxDecoration(
                     color: medicine.statusColor.withOpacity(0.1),
                     borderRadius: BorderRadius.circular(12),
@@ -109,7 +105,11 @@ class MedicineCard extends StatelessWidget {
                   child: Row(
                     mainAxisSize: MainAxisSize.min,
                     children: [
-                      Icon(medicine.statusIcon, color: medicine.statusColor, size: 14),
+                      Icon(
+                        medicine.statusIcon,
+                        color: medicine.statusColor,
+                        size: 14,
+                      ),
                       const SizedBox(width: 4),
                       Text(
                         medicine.statusText,
@@ -147,10 +147,7 @@ class MedicineCard extends StatelessWidget {
               onPressed: () {},
               child: const Text(
                 "Görüntüle",
-                style: TextStyle(
-                  color: Colors.blue,
-                  fontFamily: 'Poppins',
-                ),
+                style: TextStyle(color: Colors.blue, fontFamily: 'Poppins'),
               ),
             ),
         ],

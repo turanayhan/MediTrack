@@ -9,7 +9,6 @@ import '../widgets/blink_info_card.dart';
 import '../widgets/header_widget.dart' show HeaderWidget;
 import '../widgets/info_card.dart';
 import '../widgets/medicine_card.dart';
-import '../model/medicine.dart';
 import '../widgets/we_card.dart';
 
 class HomePage extends StatefulWidget {
@@ -36,10 +35,6 @@ class _HomePageState extends State<HomePage> {
 
   @override
   Widget build(BuildContext context) {
-
-    final medicines = Provider.of<AddViewModel>(context).medicines;
-
-
     return Scaffold(
       backgroundColor: const Color(0xFFF3F8FE),
       body: NestedScrollView(
@@ -80,61 +75,66 @@ class _HomePageState extends State<HomePage> {
             ),
           ];
         },
-        body: ListView.builder(
-          padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
-          itemCount: medicines.length + 1, // Quick Actions ek slot
-          itemBuilder: (context, index) {
-            if (index < medicines.length) {
-              return MedicineCard(
-                medicine: medicines[index],
-                onActionTap: () {
-                  debugPrint("${medicines[index].name} tıklandı");
-                },
-              );
-            } else {
-              return Padding(
-                padding: const EdgeInsets.only(top: 16, bottom: 24),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Row(
+        body: Consumer<AddViewModel>(
+          builder: (context, addViewModel, child) {
+            final medicines = addViewModel.medicines;
+
+            return ListView.builder(
+              padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+              itemCount: medicines.length + 1, // Quick Actions slot
+              itemBuilder: (context, index) {
+                if (index < medicines.length) {
+                  return MedicineCard(
+                    medicine: medicines[index],
+                    onActionTap: () {
+                      debugPrint("${medicines[index].name} tıklandı");
+                    },
+                  );
+                } else {
+                  // Quick Actions ve WeekCard
+                  return Padding(
+                    padding: const EdgeInsets.only(top: 16, bottom: 24),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Container(
-                          width: 22,
-                          height: 22,
-                          child: const Icon(
-                            Icons.electric_bolt_rounded,
-                            color: Colors.yellow,
-                            size: 24,
-                          ),
+                        Row(
+                          children: [
+                            Container(
+                              width: 22,
+                              height: 22,
+                              child: const Icon(
+                                Icons.electric_bolt_rounded,
+                                color: Colors.yellow,
+                                size: 24,
+                              ),
+                            ),
+                            const SizedBox(width: 8),
+                            const Text(
+                              " Hızlı İşlemler",
+                              style: TextStyle(
+                                fontSize: 14,
+                                fontFamily: 'Poppins',
+                                fontWeight: FontWeight.normal,
+                              ),
+                            ),
+                          ],
                         ),
-                        const SizedBox(width: 8),
-                        const Text(
-                          " Hızlı İşlemler",
-                          style: TextStyle(
-                            fontSize: 14,
-                            fontFamily: 'Poppins',
-                            fontWeight: FontWeight.normal,
-                          ),
+                        const SizedBox(height: 16),
+                        QuickActions(),
+                        const SizedBox(height: 16),
+                        WeekCard(
+                          progress: 0.92,
+                          taken: 28,
+                          missed: 2,
+                          upcoming: 5,
+                          adherence: 92,
                         ),
                       ],
                     ),
-                    const SizedBox(height: 16),
-                    QuickActions(),
-                    const SizedBox(height: 16),
-            WeekCard(
-            progress: 0.92,
-            taken: 28,
-            missed: 2,
-            upcoming: 5,
-            adherence: 92,
-            ),
-
-
-                  ],
-                ),
-              );
-            }
+                  );
+                }
+              },
+            );
           },
         ),
       ),
