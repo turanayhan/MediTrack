@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart' hide AppBar;
 import 'package:flutter/services.dart';
-import 'package:hap_takip/features/splash/widgets/animated_dot.dart';
+import 'package:hap_takip/features/splash/presentation/widget/animated_dot.dart';
 import 'package:provider/provider.dart';
-import '../widgets/animated_medication_icon.dart';
-import '../widgets/floating_icon.dart';
-import '../view_model/splash_view_model.dart';
-import '../widgets/feature_box.dart';
+import '../widget/animated_medication_icon.dart';
+import '../widget/floating_icon.dart';
+import '../bloc/splash_view_model.dart';
+import '../widget/feature_box.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});

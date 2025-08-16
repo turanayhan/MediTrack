@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:hap_takip/features/dashboard/view/dashboard.dart';
-import '../../features/splash/view/splash_screen.dart';
+import 'package:hap_takip/features/main/presentation/screen/main_screen.dart';
+import '../../features/splash/presentation/screen/splash_screen.dart';
 
 class AppRoutes {
   static const String splash = '/';

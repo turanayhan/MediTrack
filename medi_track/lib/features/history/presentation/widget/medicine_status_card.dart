@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../model/medicine_status_model.drat.dart';
+import '../../data/model/medicine_status_model.drat.dart';
 
 class MedicineStatusCard extends StatelessWidget {
   final MedicineStatus medicine;

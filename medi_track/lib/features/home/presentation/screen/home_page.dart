@@ -1,15 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:hap_takip/features/home/widgets/quick_actions_card.dart';
-import 'package:hap_takip/features/home/widgets/top_container.dart';
+import 'package:hap_takip/features/home/presentation/widget/quick_actions_card.dart';
+import 'package:hap_takip/features/home/presentation/widget/top_container.dart';
 import 'package:provider/provider.dart';
 
-import '../../add/view_model/add_view_model.dart';
-import '../widgets/blink_info_card.dart';
-import '../widgets/header_widget.dart' show HeaderWidget;
-import '../widgets/info_card.dart';
-import '../widgets/medicine_card.dart';
-import '../widgets/we_card.dart';
+import '../../../add/presentation/bloc/add_view_model.dart';
+import '../widget/blink_info_card.dart';
+import '../widget/header_widget.dart' show HeaderWidget;
+import '../widget/info_card.dart';
+import '../widget/medicine_card.dart';
+import '../widget/we_card.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});

@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart' hide NavigationBar;
 import 'package:flutter/services.dart';
-import 'package:hap_takip/features/add/view/add_medicine.dart';
-import 'package:hap_takip/features/dashboard/widgets/custom_navigation_bar.dart';
-import 'package:hap_takip/features/history/view/history.dart';
-import 'package:hap_takip/features/home/view/home_page.dart';
+import 'package:hap_takip/features/add/presentation/screen/add_medicine.dart';
+import 'package:hap_takip/features/main/presentation/widget/custom_navigation_bar.dart';
+import 'package:hap_takip/features/history/presentation/screen/history.dart';
+import 'package:hap_takip/features/home/presentation/screen/home_page.dart';
 
 class Dashboard extends StatefulWidget {
   const Dashboard({Key? key}) : super(key: key);

@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
-import '../../../core/widgets/gradient_button.dart';
+import '../../../../core/widgets/gradient_button.dart';
 
-import '../../add/view_model/add_view_model.dart';
-import '../model/medicine_status_model.drat.dart';
-import '../widgets/pill_history_search.dart';
-import '../widgets/medicine_status_card.dart';
-import '../widgets/pill_history_top.dart';
+import '../../../add/presentation/bloc/add_view_model.dart';
+import '../../data/model/medicine_status_model.drat.dart';
+import '../widget/pill_history_search.dart';
+import '../widget/medicine_status_card.dart';
+import '../widget/pill_history_top.dart';
 
 class PillHistory extends StatefulWidget {
   const PillHistory({super.key});

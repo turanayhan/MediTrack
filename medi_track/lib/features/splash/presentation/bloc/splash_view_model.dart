@@ -1,6 +1,6 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
-import 'package:hap_takip/routes/app_routes.dart';
+import 'package:hap_takip/config/routes/app_routes.dart';
 
 class SplashViewModel extends ChangeNotifier {
   void startTimer(BuildContext context) {

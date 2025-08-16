@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:hap_takip/features/history/model/medicine_status_model.drat.dart';
+import 'package:hap_takip/features/history/data/model/medicine_status_model.drat.dart';
 
 
 

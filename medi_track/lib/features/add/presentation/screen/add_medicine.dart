@@ -1,17 +1,17 @@
 import 'dart:math';
 
 import 'package:flutter/material.dart';
-import 'package:hap_takip/features/history/model/medicine_status_model.drat.dart';
+import 'package:hap_takip/features/history/data/model/medicine_status_model.drat.dart';
 import 'package:provider/provider.dart';
 
-import '../../../core/widgets/custom_app_bar.dart';
-import '../../../core/widgets/gradient_button.dart';
+import '../../../../core/widgets/custom_app_bar.dart';
+import '../../../../core/widgets/gradient_button.dart';
 
-import '../view_model/add_view_model.dart';
-import '../widgets/basic_info_card.dart';
-import '../widgets/photo_card.dart';
-import '../widgets/reminders_card.dart';
-import '../widgets/schedule_card.dart';
+import '../bloc/add_view_model.dart';
+import '../widget/basic_info_card.dart';
+import '../widget/photo_card.dart';
+import '../widget/reminders_card.dart';
+import '../widget/schedule_card.dart';
 
 // Yeni ilaç ekleme ekranı için StatefulWidget
 class AddMedicine extends StatefulWidget {
