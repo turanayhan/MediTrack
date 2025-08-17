@@ -1,26 +1,46 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:hap_takip/core/theme/app_theme.dart';
-import 'package:hap_takip/features/add/presentation/bloc/add_view_model.dart';
+import 'package:hap_takip/features/add/data/model/medicine_dto.dart';
+import 'package:hap_takip/features/add/data/repositories/add_medicine_repository.dart';
+import 'package:hap_takip/features/add/presentation/bloc/add_medicine_bloc.dart';
+import 'package:hap_takip/features/add/presentation/bloc/add_medicine_event.dart';
 import 'package:hap_takip/features/splash/presentation/screen/splash_screen.dart';
 import 'package:hap_takip/config/routes/app_routes.dart';
-import 'package:provider/provider.dart';
+import 'package:hive/hive.dart';
+import 'package:hive_flutter/hive_flutter.dart';
+import 'package:path_provider/path_provider.dart';
+import 'package:flutter_bloc/flutter_bloc.dart'; // Bloc package
 
-import 'features/splash/presentation/bloc/splash_view_model.dart';
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
 
-void main() {
+  // Hive başlat
+  final dir = await getApplicationDocumentsDirectory();
+  Hive.init(dir.path);
 
-  SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
+  // Hive Flutter kullanıyorsan:
+  await Hive.initFlutter();
+
+  // Adapter kaydı (MedicineDTO için)
+  Hive.registerAdapter(MedicineDTOAdapter());
+
+  // Box aç
+  final medicineBox = await Hive.openBox<MedicineDTO>('medicines');
+
+  // Repository oluşturuluyor
+  final repository = MedicineRepository(medicineBox);
+
+  // UI ayarları
+  SystemChrome.setSystemUIOverlayStyle(const SystemUiOverlayStyle(
     statusBarColor: Colors.blue,
     statusBarIconBrightness: Brightness.light,
   ));
+
+  // Bloc ve uygulama başlatma
   runApp(
-    //provider tanımlama
-    MultiProvider(
-      providers: [
-        ChangeNotifierProvider(create: (_) => SplashViewModel()),
-        ChangeNotifierProvider(create: (_) => AddViewModel()),
-      ],
+    BlocProvider(
+      create: (_) => AddMedicineBloc(repository)..add(LoadMedicines()), // Bloc'u başlat
       child: const MyApp(),
     ),
   );
@@ -28,6 +48,7 @@ void main() {
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
+  
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -35,11 +56,7 @@ class MyApp extends StatelessWidget {
       initialRoute: AppRoutes.splash,
       onGenerateRoute: AppRoutes.generateRoute,
       theme: AppTheme.lightTheme,
-
-
       home: const SplashScreen(),
     );
   }
 }
-
-

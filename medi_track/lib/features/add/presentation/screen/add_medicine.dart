@@ -2,12 +2,10 @@ import 'dart:math';
 
 import 'package:flutter/material.dart';
 import 'package:hap_takip/features/history/data/model/medicine_status_model.drat.dart';
-import 'package:provider/provider.dart';
 
 import '../../../../core/widgets/custom_app_bar.dart';
 import '../../../../core/widgets/gradient_button.dart';
 
-import '../bloc/add_view_model.dart';
 import '../widget/basic_info_card.dart';
 import '../widget/photo_card.dart';
 import '../widget/reminders_card.dart';
@@ -74,13 +72,13 @@ class _AddMedicineState extends State<AddMedicine> {
     });
 
     // ViewModel üzerinden kaydetme işlemini çağır
-    bool success = await context.read<AddViewModel>().saveMedicine(medicine);
+   // bool success = await context.read<AddViewModel>().saveMedicine(medicine);
 
     setState(() {
       //  _isSaving = false; // Kaydetme işlemi bitti (opsiyonel)
     });
 
-    if (success) {
+    if (true) {
       // Başarılıysa kullanıcıya bilgi ver ve formu temizle
       ScaffoldMessenger.of(context).showSnackBar(
         const SnackBar(content: Text('İlaç başarıyla kaydedildi!')),

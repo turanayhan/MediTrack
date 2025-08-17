@@ -2,9 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
 import '../../../../core/widgets/gradient_button.dart';
-
-import '../../../add/presentation/bloc/add_view_model.dart';
-import '../../data/model/medicine_status_model.drat.dart';
 import '../widget/pill_history_search.dart';
 import '../widget/medicine_status_card.dart';
 import '../widget/pill_history_top.dart';
@@ -36,7 +33,7 @@ class _PillHistoryState extends State<PillHistory> {
   @override
   Widget build(BuildContext context) {
 
-    final medicines = Provider.of<AddViewModel>(context).medicines;
+   
 
     return Scaffold(
       backgroundColor: const Color(0xFFF3F8FE),

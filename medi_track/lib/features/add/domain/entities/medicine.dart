@@ -1,8 +1,6 @@
-import 'dart:ui';
+import 'package:flutter/material.dart';
 
-import 'package:flutter/cupertino.dart';
-
-class MedicineStatus {
+class Medicine {
   final String name;
   final String dosage;
   final String form;
@@ -11,9 +9,9 @@ class MedicineStatus {
   final String frequency;
   final String nextTime;
   final String statusLabel;
-  final String statusType; 
+  final String statusType;
   final String streakLabel;
-  final int adherence; // %
+  final int adherence;
   final String iconPath;
   final IconData statusIcon;
   final String statusText;
@@ -22,10 +20,7 @@ class MedicineStatus {
   final String? actionText;
   final Color iconColor;
 
-
-
-
-  MedicineStatus({
+  Medicine({
     required this.name,
     required this.dosage,
     required this.form,
@@ -44,6 +39,5 @@ class MedicineStatus {
     required this.showActionButton,
     required this.actionText,
     required this.iconColor,
-
   });
 }
