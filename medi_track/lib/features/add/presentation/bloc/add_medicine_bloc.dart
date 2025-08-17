@@ -1,13 +1,13 @@
 
 
 import 'package:bloc/bloc.dart';
-import 'package:hap_takip/features/add/data/repositories/add_medicine_repository.dart';
+import 'package:hap_takip/features/add/domain/repositories/add_medicine_repository.dart';
 import 'package:hap_takip/features/add/presentation/bloc/add_medicine_event.dart';
 import 'package:hap_takip/features/add/presentation/bloc/add_medicine_state.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class AddMedicineBloc extends Bloc<AddMedicineEvent, AddMedicineState> {
-  final MedicineRepository repository;
+  final AddMedicineRepository repository;
 
   AddMedicineBloc(this.repository) : super(MedicineInitial()) {
     // İlaçları yükleme

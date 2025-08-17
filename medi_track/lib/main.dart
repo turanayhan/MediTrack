@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:hap_takip/core/theme/app_theme.dart';
 import 'package:hap_takip/features/add/data/model/medicine_dto.dart';
-import 'package:hap_takip/features/add/data/repositories/add_medicine_repository.dart';
+import 'package:hap_takip/features/add/data/repositories/add_medicine_repository_imp.dart';
 import 'package:hap_takip/features/add/presentation/bloc/add_medicine_bloc.dart';
 import 'package:hap_takip/features/add/presentation/bloc/add_medicine_event.dart';
 import 'package:hap_takip/features/splash/presentation/screen/splash_screen.dart';
@@ -29,18 +29,21 @@ void main() async {
   final medicineBox = await Hive.openBox<MedicineDTO>('medicines');
 
   // Repository oluşturuluyor
-  final repository = MedicineRepository(medicineBox);
+  final repository = MedicineRepositoryImpl(medicineBox);
 
   // UI ayarları
-  SystemChrome.setSystemUIOverlayStyle(const SystemUiOverlayStyle(
-    statusBarColor: Colors.blue,
-    statusBarIconBrightness: Brightness.light,
-  ));
+  SystemChrome.setSystemUIOverlayStyle(
+    const SystemUiOverlayStyle(
+      statusBarColor: Colors.blue,
+      statusBarIconBrightness: Brightness.light,
+    ),
+  );
 
   // Bloc ve uygulama başlatma
   runApp(
     BlocProvider(
-      create: (_) => AddMedicineBloc(repository)..add(LoadMedicines()), // Bloc'u başlat
+      create: (_) =>
+          AddMedicineBloc(repository)..add(LoadMedicines()), // Bloc'u başlat
       child: const MyApp(),
     ),
   );
@@ -48,7 +51,7 @@ void main() async {
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
-  
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
