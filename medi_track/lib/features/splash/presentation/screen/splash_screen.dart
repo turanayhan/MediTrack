@@ -1,10 +1,11 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart' hide AppBar;
 import 'package:flutter/services.dart';
+import 'package:hap_takip/config/routes/app_routes.dart';
 import 'package:hap_takip/features/splash/presentation/widget/animated_dot.dart';
-import 'package:provider/provider.dart';
 import '../widget/animated_medication_icon.dart';
 import '../widget/floating_icon.dart';
-import '../bloc/splash_view_model.dart';
 import '../widget/feature_box.dart';
 
 class SplashScreen extends StatefulWidget {
@@ -25,8 +26,8 @@ class _SplashScreenState extends State<SplashScreen> {
       statusBarIconBrightness: Brightness.dark,
     ));
 
-    Future.microtask(() {
-      context.read<SplashViewModel>().startTimer(context);
+  Timer(const Duration(seconds: 3), () {
+      Navigator.pushReplacementNamed(context, AppRoutes.dashboard);
     });
   }
 

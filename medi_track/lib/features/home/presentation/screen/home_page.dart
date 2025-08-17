@@ -1,15 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:hap_takip/features/add/presentation/bloc/add_medicine_bloc.dart';
+import 'package:hap_takip/features/add/presentation/bloc/add_medicine_state.dart';
 import 'package:hap_takip/features/home/presentation/widget/quick_actions_card.dart';
 import 'package:hap_takip/features/home/presentation/widget/top_container.dart';
-import 'package:provider/provider.dart';
-
-import '../../../add/presentation/bloc/add_view_model.dart';
 import '../widget/blink_info_card.dart';
 import '../widget/header_widget.dart' show HeaderWidget;
 import '../widget/info_card.dart';
 import '../widget/medicine_card.dart';
 import '../widget/we_card.dart';
+
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -46,28 +47,7 @@ class _HomePageState extends State<HomePage> {
                 children: [
                   topContainer(context),
                   const SizedBox(height: 24),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                    children: [
-                      InfoCard(
-                        count: '',
-                        label: "Günlük Alım",
-                        color: Colors.blue,
-                        icon: Icons.medication,
-                      ),
-                      InfoCard(
-                        count: '',
-                        label: 'Alınan İlaçlar',
-                        color: Colors.green,
-                        icon: Icons.check_circle,
-                      ),
-                      BlinkingInfoCard(
-                        count: '',
-                        label: 'Kaçan İlaçlar',
-                        icon: Icons.error_outline,
-                      ),
-                    ],
-                  ),
+                  buildInfoCards(),
                   const SizedBox(height: 6),
                   HeaderWidget(),
                 ],
@@ -75,68 +55,104 @@ class _HomePageState extends State<HomePage> {
             ),
           ];
         },
-        body: Consumer<AddViewModel>(
-          builder: (context, addViewModel, child) {
-            final medicines = addViewModel.medicines;
-
-            return ListView.builder(
-              padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
-              itemCount: medicines.length + 1, // Quick Actions slot
-              itemBuilder: (context, index) {
-                if (index < medicines.length) {
-                  return MedicineCard(
-                    medicine: medicines[index],
-                    onActionTap: () {
-                      debugPrint("${medicines[index].name} tıklandı");
-                    },
-                  );
-                } else {
-                  // Quick Actions ve WeekCard
-                  return Padding(
-                    padding: const EdgeInsets.only(top: 16, bottom: 24),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Row(
-                          children: [
-                            Container(
-                              width: 22,
-                              height: 22,
-                              child: const Icon(
-                                Icons.electric_bolt_rounded,
-                                color: Colors.yellow,
-                                size: 24,
-                              ),
-                            ),
-                            const SizedBox(width: 8),
-                            const Text(
-                              " Hızlı İşlemler",
-                              style: TextStyle(
-                                fontSize: 14,
-                                fontFamily: 'Poppins',
-                                fontWeight: FontWeight.normal,
-                              ),
-                            ),
-                          ],
-                        ),
-                        const SizedBox(height: 16),
-                        QuickActions(),
-                        const SizedBox(height: 16),
-                        WeekCard(
-                          progress: 0.92,
-                          taken: 28,
-                          missed: 2,
-                          upcoming: 5,
-                          adherence: 92,
-                        ),
-                      ],
-                    ),
-                  );
-                }
-              },
-            );
+        body: BlocBuilder<AddMedicineBloc, AddMedicineState>(
+          builder: (context, state) {
+            if (state is MedicineInitial) {
+              return const Center(child: CircularProgressIndicator());
+            } else if (state is MedicineLoaded) {
+              return buildMedicineList(state);
+            } else if (state is MedicineError) {
+              return Center(child: Text('Error: ${state.message}'));
+            }
+            return const SizedBox();
           },
         ),
+      ),
+    );
+  }
+
+  // Info kartlarını birleştiren widget
+  Widget buildInfoCards() {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+      children: [
+        InfoCard(
+          count: '',
+          label: "Günlük Alım",
+          color: Colors.blue,
+          icon: Icons.medication,
+        ),
+        InfoCard(
+          count: '',
+          label: 'Alınan İlaçlar',
+          color: Colors.green,
+          icon: Icons.check_circle,
+        ),
+        BlinkingInfoCard(
+          count: '',
+          label: 'Kaçan İlaçlar',
+          icon: Icons.error_outline,
+        ),
+      ],
+    );
+  }
+
+  // İlaçları listeleyen widget
+  Widget buildMedicineList(MedicineLoaded state) {
+    return ListView.builder(
+      padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+      itemCount: state.medicines.length + 1, // Quick Actions slot
+      itemBuilder: (context, index) {
+        if (index < state.medicines.length) {
+          return MedicineCard(
+            medicine: state.medicines[index],
+            onActionTap: () {
+              debugPrint("${state.medicines[index].name} tıklandı");
+            },
+          );
+        } else {
+          return buildQuickActions();
+        }
+      },
+    );
+  }
+
+  // Hızlı işlemler ve WeekCard'ı birleştiren widget
+  Widget buildQuickActions() {
+    return Padding(
+      padding: const EdgeInsets.only(top: 16, bottom: 24),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Row(
+            children: [
+              const Icon(
+                Icons.electric_bolt_rounded,
+                color: Colors.yellow,
+                size: 24,
+              ),
+              const SizedBox(width: 8),
+              const Text(
+                " Hızlı İşlemler",
+                style: TextStyle(
+                  fontSize: 14,
+                  fontFamily: 'Poppins',
+                  fontWeight: FontWeight.normal,
+                ),
+              ),
+            ],
+          ),
+          const SizedBox(height: 16),
+          const QuickActions(),
+          const SizedBox(height: 16),
+          const WeekCard(
+            progress: 0.92,
+            taken: 28,
+            missed: 2,
+            upcoming: 5,
+            adherence: 92,
+          ),
+        ],
       ),
     );
   }

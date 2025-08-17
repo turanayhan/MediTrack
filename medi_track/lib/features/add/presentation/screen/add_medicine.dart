@@ -1,15 +1,17 @@
 import 'dart:math';
 
 import 'package:flutter/material.dart';
-import 'package:hap_takip/features/history/data/model/medicine_status_model.drat.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:hap_takip/features/add/domain/entities/medicine.dart';
+import 'package:hap_takip/features/add/presentation/bloc/add_medicine_event.dart';
 
 import '../../../../core/widgets/custom_app_bar.dart';
 import '../../../../core/widgets/gradient_button.dart';
-
 import '../widget/basic_info_card.dart';
 import '../widget/photo_card.dart';
 import '../widget/reminders_card.dart';
 import '../widget/schedule_card.dart';
+import '../bloc/add_medicine_bloc.dart';
 
 // Yeni ilaç ekleme ekranı için StatefulWidget
 class AddMedicine extends StatefulWidget {
@@ -39,60 +41,38 @@ class _AddMedicineState extends State<AddMedicine> {
     );
   }
 
-  // İlaç kaydetme işlemini gerçekleştiren fonksiyon
-  void _saveMedicine() async {
-    final name = _nameCtrl.text.trim();
-    final dosage = _dosageCtrl.text.trim();
-    final type = _selectedType ?? '';
+  // Fotoğraf ekleme işlemi için tıklama fonksiyonu (şu an sadece bilgi mesajı gösteriyor)
+  void _onTapPhoto() {
+    ScaffoldMessenger.of(context).showSnackBar(
+      const SnackBar(content: Text('Tap to add photo (implement picker)')),
+    );
+  }
 
-    // İlaç modelini oluştur
-    final MedicineStatus medicine = MedicineStatus(
-      name: name,
-      dosage: "$dosage mg",
-      form: type,
-      progressCurrent: 3,
-      progressTotal: 7,
-      frequency: "Günde 3 kez",
-      nextTime: "14:00",
-      statusLabel: "Harika!",
-      statusType: "excellent",
-      streakLabel: "3 gün üst üste alındı",
-      adherence: 85,
-      iconPath: "assets/images/medicinesCol",
-      statusColor: getRandomColor(),
-      statusText: "günde 3 defa",
-      statusIcon: Icons.calendar_month,
+  // İlaç kaydetme işlemini gerçekleştiren fonksiyon
+  void _onSaveMedicine() {
+    final medicine = Medicine(
+      name: _nameCtrl.text,
+      dosage: _dosageCtrl.text,
+      form: _selectedType ?? 'Tablet', // Default 'Tablet'
+      progressCurrent: 0,
+      progressTotal: 100, // Örneğin 100 birimlik ilaç
+      frequency: 'Günlük', // Örneğin günlük
+      nextTime: '2025-08-18 08:00:00',
+      statusLabel: 'Başarıyla alındı',
+      statusType: 'success',
+      adherence: 80,
+      iconPath: 'assets/icons/medicine_icon.png',
+      statusColor: Colors.green,
+      statusText: 'İlacı alın',
+      statusIcon: Icons.check_circle,
       showActionButton: true,
-      actionText: 'İncele',
-      iconColor: Colors.grey,
+      actionText: 'Tamamlandı',
+      iconColor: Colors.blue,
+       streakLabel: '',
     );
 
-    setState(() {
-      //  _isSaving = true; // Kaydetme işlemi başlatıldı (opsiyonel)
-    });
-
-    // ViewModel üzerinden kaydetme işlemini çağır
-   // bool success = await context.read<AddViewModel>().saveMedicine(medicine);
-
-    setState(() {
-      //  _isSaving = false; // Kaydetme işlemi bitti (opsiyonel)
-    });
-
-    if (true) {
-      // Başarılıysa kullanıcıya bilgi ver ve formu temizle
-      ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(content: Text('İlaç başarıyla kaydedildi!')),
-      );
-
-      _nameCtrl.clear();
-      _dosageCtrl.clear();
-      setState(() => _selectedType = null);
-    } else {
-      // Hata durumunda kullanıcıya uyarı göster
-      ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(content: Text('Lütfen tüm alanları doldurun.')),
-      );
-    }
+    // BLoC'a yeni ilacı ekleme işlemi
+    context.read<AddMedicineBloc>().add(AddMedicines(medicine));
   }
 
   @override
@@ -101,13 +81,6 @@ class _AddMedicineState extends State<AddMedicine> {
     _nameCtrl.dispose();
     _dosageCtrl.dispose();
     super.dispose();
-  }
-
-  // Fotoğraf ekleme işlemi için tıklama fonksiyonu (şu an sadece bilgi mesajı gösteriyor)
-  void _onTapPhoto() {
-    ScaffoldMessenger.of(context).showSnackBar(
-      const SnackBar(content: Text('Tap to add photo (implement picker)')),
-    );
   }
 
   @override
@@ -120,11 +93,8 @@ class _AddMedicineState extends State<AddMedicine> {
         onBack: () {
           // Geri gitme işlemi (henüz implement edilmemiş)
         },
-        onAction: () {
-          // Kaydetme işlemi (henüz implement edilmemiş)
-        },
+        onAction: _onSaveMedicine,
       ),
-
       body: SafeArea(
         child: SingleChildScrollView(
           padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 20),
@@ -151,18 +121,12 @@ class _AddMedicineState extends State<AddMedicine> {
               // Hatırlatıcılar kartı
               RemindersCard(),
 
-              // İlaç listesini gösteren küçük bir liste (şu an eklenmemiş)
-              const SizedBox(height: 16),
-
               // Kaydet butonu
               Padding(
                 padding: const EdgeInsets.only(top: 24, bottom: 32),
                 child: GradientButton(
                   text: "İlacı Kaydet",
-                  onPressed: () {
-                    print("Buton   tıklandı");
-                    _saveMedicine();
-                  },
+                  onPressed: _onSaveMedicine,
                 ),
               ),
             ],

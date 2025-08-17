@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:provider/provider.dart';
 import '../../../../core/widgets/gradient_button.dart';
 import '../widget/pill_history_search.dart';
-import '../widget/medicine_status_card.dart';
 import '../widget/pill_history_top.dart';
 
 class PillHistory extends StatefulWidget {
@@ -58,10 +56,10 @@ class _PillHistoryState extends State<PillHistory> {
         },
         body: ListView.builder(
           padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
-          itemCount: medicines.length + 1, // Buton için +1
+          itemCount:  1, // Buton için +1
           itemBuilder: (context, index) {
-            if (index < medicines.length) {
-              return MedicineStatusCard(medicine: medicines[index]);
+            if (index < 3) {
+              
             } else {
               return Padding(
                 padding: const EdgeInsets.only(top: 24, bottom: 32),

@@ -1,29 +1,19 @@
 import '../../domain/entities/medicine.dart';
-import 'package:equatable/equatable.dart';
 
-abstract class AddMedicineEvent extends Equatable {
-  const AddMedicineEvent();
 
-  @override
-  List<Object?> get props => [];
-}
+// Genel Base Event
+abstract class AddMedicineEvent {}
 
 class LoadMedicines extends AddMedicineEvent {}
 
-class AddMedicine extends AddMedicineEvent {
+class AddMedicines extends AddMedicineEvent {
   final Medicine medicine;
 
-  const AddMedicine(this.medicine);
-
-  @override
-  List<Object?> get props => [medicine];
+  AddMedicines(this.medicine);
 }
 
 class DeleteMedicine extends AddMedicineEvent {
-  final int key;
+  final String key;
 
-  const DeleteMedicine(this.key);
-
-  @override
-  List<Object?> get props => [key];
+  DeleteMedicine(this.key);
 }

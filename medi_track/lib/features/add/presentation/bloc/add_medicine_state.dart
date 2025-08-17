@@ -21,6 +21,7 @@ class MedicineLoaded extends AddMedicineState {
   List<Object?> get props => [medicines];
 }
 
+
 class MedicineError extends AddMedicineState {
   final String message;
 

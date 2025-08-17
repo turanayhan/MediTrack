@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:hap_takip/features/history/data/model/medicine_status_model.drat.dart';
+import 'package:hap_takip/features/add/domain/entities/medicine.dart';
 
 class MedicineCard extends StatelessWidget {
-  final MedicineStatus medicine;
+  final Medicine medicine;
   final VoidCallback? onActionTap;
 
   const MedicineCard({super.key, required this.medicine, this.onActionTap});
