@@ -19,19 +19,13 @@ void main() async {
   final dir = await getApplicationDocumentsDirectory();
   Hive.init(dir.path);
 
-  // Hive Flutter kullanıyorsan:
   await Hive.initFlutter();
-
-  // Adapter kaydı (MedicineDTO için)
   Hive.registerAdapter(MedicineDTOAdapter());
-
-  // Box aç
   final medicineBox = await Hive.openBox<MedicineDTO>('medicines');
 
-  // Repository oluşturuluyor
+
   final repository = MedicineRepositoryImpl(medicineBox);
 
-  // UI ayarları
   SystemChrome.setSystemUIOverlayStyle(
     const SystemUiOverlayStyle(
       statusBarColor: Colors.blue,
@@ -39,7 +33,6 @@ void main() async {
     ),
   );
 
-  // Bloc ve uygulama başlatma
   runApp(
     BlocProvider(
       create: (_) =>
